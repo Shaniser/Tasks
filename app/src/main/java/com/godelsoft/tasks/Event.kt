@@ -1,9 +1,13 @@
 package com.godelsoft.tasks
 
+import java.util.*
+import kotlin.collections.ArrayList
+
 open class Event (
+    val id: Int,
     var header: String,
     var content: String,
-    var date: String,
+    var date: Calendar,
     var timeBegin: String,
     var timeEnd: String? = null
 ){

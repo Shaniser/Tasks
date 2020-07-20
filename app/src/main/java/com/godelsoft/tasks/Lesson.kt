@@ -1,14 +1,17 @@
 package com.godelsoft.tasks
 
+import java.util.*
+
 class Lesson(
+    id: Int,
     header: String,
     content: String,
-    date: String,
+    date: Calendar,
     timeBegin: String,
     timeEnd: String,
     var classroom: String? = null,
     var teacher: Teacher? = null
 
-) : Event(header, content, date, timeBegin, timeEnd) {
+) : Event(id, header, content, date, timeBegin, timeEnd) {
 
 }
