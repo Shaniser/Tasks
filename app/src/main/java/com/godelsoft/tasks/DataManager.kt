@@ -1,5 +1,6 @@
 package com.godelsoft.tasks
 
+import java.lang.Exception
 import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
@@ -8,9 +9,14 @@ object DataManager {
     private val events: HashMap<Int, Event> = hashMapOf()
     private val teachers: HashMap<Int, Teacher> = hashMapOf()
 
-    fun initialize() {
-        loadTeachers()
-        loadEvents()
+    fun initialize(onError: () -> Unit, onSuccess: () -> Unit) {
+        try {
+            loadTeachers()
+            loadEvents()
+            onSuccess()
+        } catch (e: Exception) {
+            onError()
+        }
     }
 
     fun createId(): Int {

@@ -13,6 +13,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        DataManager.initialize({Toast.makeText(this, "Loading error", Toast.LENGTH_SHORT).show()}) {
+            // TODO refresh UI with content
+        }
+
         mainCard.setOnClickListener(this)
     }
 
