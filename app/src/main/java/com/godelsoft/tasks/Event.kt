@@ -16,5 +16,4 @@ open class Event (
     fun attachmentsSize(): Int {
         return attachments.size
     }
-
 }
