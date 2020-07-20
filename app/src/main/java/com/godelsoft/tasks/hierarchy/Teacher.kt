@@ -1,4 +1,4 @@
-package com.godelsoft.tasks
+package com.godelsoft.tasks.hierarchy
 
 data class Teacher (
     var id: Int,

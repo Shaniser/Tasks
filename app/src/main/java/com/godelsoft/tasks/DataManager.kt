@@ -1,5 +1,10 @@
 package com.godelsoft.tasks
 
+import com.godelsoft.tasks.extensions.date
+import com.godelsoft.tasks.hierarchy.Attachment
+import com.godelsoft.tasks.hierarchy.Event
+import com.godelsoft.tasks.hierarchy.Lesson
+import com.godelsoft.tasks.hierarchy.Teacher
 import java.lang.Exception
 import java.util.*
 import kotlin.collections.ArrayList

@@ -1,4 +1,4 @@
-package com.godelsoft.tasks
+package com.godelsoft.tasks.hierarchy
 
 import java.util.*
 

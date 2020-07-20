@@ -1,4 +1,4 @@
-package com.godelsoft.tasks
+package com.godelsoft.tasks.extensions
 
 import java.util.*
 

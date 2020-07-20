@@ -1,4 +1,4 @@
-package com.godelsoft.tasks
+package com.godelsoft.tasks.hierarchy
 
 enum class AttachmentType {
     HOMEWORK,
