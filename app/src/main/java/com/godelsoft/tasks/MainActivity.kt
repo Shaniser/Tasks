@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             // TODO refresh UI with content
         }
 
-        mainCard.setOnClickListener(this)
+        mainMessage.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.prevCategoryBtn -> {
 
             }
-            R.id.mainCard -> {
+            R.id.mainMessage -> {
                 Toast.makeText(this, "test", Toast.LENGTH_SHORT).show()
             }
         }

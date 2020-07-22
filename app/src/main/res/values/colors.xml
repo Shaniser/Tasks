@@ -11,7 +11,7 @@
     <color name="colorEventInactive">@android:color/darker_gray</color>
     <color name="colorEventPersonal">@android:color/holo_green_light</color>
     <color name="colorEventGlobal">@android:color/holo_orange_light</color>
-    <color name="colorEventLGB">@android:color/holo_purple</color>
+    <color name="colorAttention">#F44336</color>
     <color name="bg">#FAFAFA</color>
 
 
