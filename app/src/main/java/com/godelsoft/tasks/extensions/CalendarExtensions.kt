@@ -15,7 +15,7 @@ var Calendar.month: Int
         set(Calendar.MONTH, value - 1)
     }
     get() {
-        return get(Calendar.MONTH + 1)
+        return get(Calendar.MONTH) + 1
     }
 
 var Calendar.year: Int
@@ -29,4 +29,9 @@ var Calendar.year: Int
 val Calendar.date: String
     get() {
         return "$day.$month.$year"
+    }
+
+val Calendar.dayOfWeek: Int
+    get() {
+        return (get(Calendar.DAY_OF_WEEK) - 2 + 7) % 7 + 1
     }
