@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="15dp"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/calLesson"
+    android:layout_marginLeft="3dp"
+    android:layout_marginRight="3dp"
+    android:layout_marginBottom="1dp"
+    app:cardBackgroundColor="@color/colorLessonLection"
+    app:contentPadding="1dp">
+
+    <TextView
+        android:id="@+id/eventName"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="Матанализ"
+        android:textColor="@color/colorIcons"
+        android:textSize="10sp" />
+</androidx.cardview.widget.CardView>

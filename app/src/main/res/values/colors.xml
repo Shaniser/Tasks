@@ -9,8 +9,9 @@
     <color name="colorIcons">#FFFFFF</color>
     <color name="colorDivider">#BDBDBD</color>
     <color name="colorEventInactive">@android:color/darker_gray</color>
-    <color name="colorEventPersonal">@android:color/holo_green_light</color>
-    <color name="colorEventGlobal">@android:color/holo_orange_light</color>
+    <color name="colorLessonPractice">#895DD8</color>
+    <color name="colorLessonLection">#129A8D</color>
+    <color name="colorSelection">@android:color/holo_orange_light</color>
     <color name="colorAttention">#F44336</color>
     <color name="bg">#FAFAFA</color>
 

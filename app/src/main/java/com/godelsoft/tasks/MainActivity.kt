@@ -87,7 +87,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         cardToCal[view] = Calendar.getInstance().apply { timeInMillis = c.timeInMillis }
         view.setOnClickListener(this)
         if (c.date == selectedDate.date) {
-            (view as CardView).setCardBackgroundColor(resources.getColor(R.color.colorEventGlobal))
+            (view as CardView).setCardBackgroundColor(resources.getColor(R.color.colorSelection))
         } else {
             (view as CardView).setCardBackgroundColor(resources.getColor(R.color.colorIcons))
         }

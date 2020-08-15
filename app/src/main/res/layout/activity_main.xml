@@ -80,7 +80,7 @@
                     android:id="@+id/view"
                     android:layout_width="wrap_content"
                     android:layout_height="10dp"
-                    android:background="@color/colorAccent"
+                    android:background="@color/colorLessonPractice"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -297,13 +297,71 @@
 
                             <LinearLayout
                                 android:id="@+id/events"
-                                android:layout_width="match_parent"
+                                android:layout_width="0dp"
                                 android:layout_height="0dp"
                                 android:orientation="vertical"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/day"></LinearLayout>
+                                app:layout_constraintTop_toBottomOf="@+id/day">
+
+                                <androidx.cardview.widget.CardView
+                                    android:id="@+id/calLesson"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="15dp"
+                                    android:layout_marginLeft="3dp"
+                                    android:layout_marginRight="3dp"
+                                    android:layout_marginBottom="1dp"
+                                    app:cardBackgroundColor="@color/colorLessonLection"
+                                    app:contentPadding="1dp">
+
+                                    <TextView
+                                        android:id="@+id/eventName"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="match_parent"
+                                        android:text="Матанализ"
+                                        android:textColor="@color/colorIcons"
+                                        android:textSize="10sp" />
+                                </androidx.cardview.widget.CardView>
+
+                                <androidx.cardview.widget.CardView
+                                    android:id="@+id/calLesson"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="15dp"
+                                    android:layout_marginLeft="3dp"
+                                    android:layout_marginRight="3dp"
+                                    android:layout_marginBottom="1dp"
+                                    app:cardBackgroundColor="@color/colorLessonPractice"
+                                    app:contentPadding="1dp">
+
+                                    <TextView
+                                        android:id="@+id/eventName"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="match_parent"
+                                        android:text="Матанализ"
+                                        android:textColor="@color/colorIcons"
+                                        android:textSize="10sp" />
+                                </androidx.cardview.widget.CardView>
+
+                                <androidx.cardview.widget.CardView
+                                    android:id="@+id/calLesson"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="15dp"
+                                    android:layout_marginLeft="3dp"
+                                    android:layout_marginRight="3dp"
+                                    android:layout_marginBottom="1dp"
+                                    app:cardBackgroundColor="@color/colorLessonLection"
+                                    app:contentPadding="1dp">
+
+                                    <TextView
+                                        android:id="@+id/eventName"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="match_parent"
+                                        android:text="Матанализ"
+                                        android:textColor="@color/colorIcons"
+                                        android:textSize="10sp" />
+                                </androidx.cardview.widget.CardView>
+                            </LinearLayout>
                         </androidx.constraintlayout.widget.ConstraintLayout>
                     </androidx.cardview.widget.CardView>
 
