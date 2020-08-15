@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         mainMessage.setOnClickListener(this)
 
-        loadCal(curCal)
+        loadCal()
         nextMonth.setOnClickListener(this)
         prevMonth.setOnClickListener(this)
     }
@@ -37,15 +37,20 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         when (v?.id) {
             R.id.nextMonth -> {
                 curCal.add(Calendar.MONTH, 1)
-                loadCal(curCal)
+                loadCal()
             }
             R.id.prevMonth -> {
                 curCal.add(Calendar.MONTH, -1)
-                loadCal(curCal)
+                loadCal()
             }
             R.id.mainMessage -> {
                 Toast.makeText(this, "test", Toast.LENGTH_SHORT).show()
             }
+        }
+
+        if (cardToCal.containsKey(v)) {
+            selectedDate = cardToCal[v]
+            loadCal()
         }
     }
 
@@ -54,11 +59,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private var curCal = Calendar.getInstance().apply {
         day = 1
     }
+    private var selectedDate = Calendar.getInstance()
     private val cardToCal = HashMap<View, Calendar>()
     @SuppressLint("WrongConstant")
-    private fun loadCal(calendar: Calendar) {
+    private fun loadCal() {
         cardToCal.clear()
-        val c = calendar.clone() as Calendar
+        val c = curCal.clone() as Calendar
         calMonth.text = c.getDisplayName(Calendar.MONTH, Calendar.LONG_STANDALONE, Locale.getDefault())?.let {
             "${it[0].toUpperCase()}${it.substring(1)}${
                 if (c.year != Calendar.getInstance().year) " ${c.year}" else ""
@@ -70,7 +76,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         for (row in calTable.children) {
             if (row is TableRow && row.id != R.id.dayNamesRow) {
                 for (elem in row.children) {
-                    loadDayCard(c, elem, calendar.month)
+                    loadDayCard(c, elem, curCal.month)
                     c.add(Calendar.DAY_OF_MONTH, 1)
                 }
             }
@@ -78,14 +84,22 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun loadDayCard(c: Calendar, view: View, curMonth: Int) {
-        cardToCal[view] = c
+        cardToCal[view] = Calendar.getInstance().apply { timeInMillis = c.timeInMillis }
         view.setOnClickListener(this)
+        if (c.date == selectedDate.date) {
+            (view as CardView).setCardBackgroundColor(resources.getColor(R.color.colorEventGlobal))
+        } else {
+            (view as CardView).setCardBackgroundColor(resources.getColor(R.color.colorIcons))
+        }
         view.apply {
             findViewById<TextView>(R.id.day).apply {
                 text = "${c.day}"
 
                 (view as CardView).elevation = 6F
                 when {
+                    c.date == selectedDate.date -> {
+                        setTextColor(resources.getColor(R.color.colorIcons))
+                    }
                     c.date == Calendar.getInstance().date -> {
                         setTextColor(resources.getColor(R.color.colorAccent))
                     }
