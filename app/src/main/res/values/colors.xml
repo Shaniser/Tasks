@@ -8,9 +8,9 @@
     <color name="colorSecondaryText">#757575</color>
     <color name="colorIcons">#FFFFFF</color>
     <color name="colorDivider">#BDBDBD</color>
-    <color name="colorEventInactive">@android:color/darker_gray</color>
-    <color name="colorLessonPractice">#895DD8</color>
-    <color name="colorLessonLection">#129A8D</color>
+    <color name="colorEvent">@android:color/holo_blue_dark</color>
+    <color name="colorLessonSeminar">#895DD8</color>
+    <color name="colorLessonLecture">#129A8D</color>
     <color name="colorSelection">@android:color/holo_orange_light</color>
     <color name="colorAttention">#F44336</color>
     <color name="bg">#FAFAFA</color>

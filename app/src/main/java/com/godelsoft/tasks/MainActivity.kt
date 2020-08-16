@@ -113,7 +113,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 }
             }
             findViewById<LinearLayout>(R.id.events).apply {
-                // TODO load events
+                removeAllViews()
+                val lAndE = DataManager.getLessonsAndEventsByDate(c)
+                for (lesson in lAndE.first) {
+                    addView(lesson.toLittleCard(this@MainActivity))
+                }
+                for (event in lAndE.second) {
+                    addView(event.toLittleCard(this@MainActivity))
+                }
             }
         }
     }

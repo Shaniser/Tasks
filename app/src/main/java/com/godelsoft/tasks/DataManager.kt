@@ -1,10 +1,8 @@
 package com.godelsoft.tasks
 
 import com.godelsoft.tasks.extensions.date
-import com.godelsoft.tasks.hierarchy.Attachment
-import com.godelsoft.tasks.hierarchy.Event
-import com.godelsoft.tasks.hierarchy.Lesson
-import com.godelsoft.tasks.hierarchy.Teacher
+import com.godelsoft.tasks.extensions.day
+import com.godelsoft.tasks.hierarchy.*
 import java.lang.Exception
 import java.util.*
 import kotlin.collections.ArrayList
@@ -31,6 +29,34 @@ object DataManager {
 
     private fun loadEvents() {
         // TODO load events from DB
+
+        // TODO remove
+        val c = Calendar.getInstance()
+        c.add(Calendar.DAY_OF_MONTH, -20)
+        for (i in 0..40) {
+            for (j in 0..Random().nextInt(4)) {
+                events[i * 100 + j] = when(Random().nextInt(3)) {
+                    0 -> Event(
+                        i * 100 + j,
+                        arrayListOf("Матанализ", "ЛинАл", "Алгоритмы компьютерной графики").random(),
+                        "description",
+                        Calendar.getInstance().apply { timeInMillis = c.timeInMillis },
+                        "time start"
+                    )
+                    else -> Lesson(
+                        i * 100 + j,
+                        arrayListOf("Матанализ", "ЛинАл", "Алгоритмы компьютерной графики").random(),
+                        "description",
+                        Calendar.getInstance().apply { timeInMillis = c.timeInMillis },
+                        "time start",
+                        "time end",
+                        arrayListOf(LessonType.LECTURE, LessonType.SEMINAR).random()
+                    )
+                }
+            }
+            c.add(Calendar.DAY_OF_MONTH, 1)
+        }
+        // TODO remove
     }
 
     private fun loadTeachers() {
