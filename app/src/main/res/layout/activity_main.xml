@@ -28,6 +28,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
+                android:layout_marginBottom="4dp"
                 app:cardBackgroundColor="@color/bg"
                 app:cardCornerRadius="32dp"
                 app:cardElevation="4dp">
@@ -42,7 +43,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/mainMessageLay"
+                    android:id="@+id/mainMessageLinLay"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="?attr/selectableItemBackgroundBorderless">
@@ -67,92 +68,18 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/mainLesson"
+            <LinearLayout
+                android:id="@+id/curEventLay"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                app:cardBackgroundColor="@color/bg"
-                app:cardCornerRadius="32dp"
-                app:cardElevation="4dp">
-
-                <View
-                    android:id="@+id/color"
-                    android:layout_width="wrap_content"
-                    android:layout_height="10dp"
-                    android:background="@color/colorLessonSeminar"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/mainLessonLay"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="?attr/selectableItemBackgroundBorderless">
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/headerLay"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginEnd="16dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
-
-                        <TextView
-                            android:id="@+id/classroom"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="721л"
-                            android:textColor="@color/colorPrimaryText"
-                            android:textSize="18sp"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            tools:visibility="visible" />
-
-                        <TextView
-                            android:id="@+id/eventHeader"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:text="Комплексный анализ"
-                            android:textAlignment="center"
-                            android:textColor="@color/colorPrimaryText"
-                            android:textSize="18sp"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/classroom"
-                            app:layout_constraintTop_toTopOf="parent" />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    <TextView
-                        android:id="@+id/time"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="16dp"
-                        android:layout_marginBottom="16dp"
-                        android:text="СР 17:25 - 19:00"
-                        android:textAlignment="center"
-                        android:textColor="@color/colorSecondaryText"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/headerLay" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.cardview.widget.CardView>
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"></LinearLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/calHeader"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp">
+                android:layout_marginTop="8dp">
 
                 <ImageButton
                     android:id="@+id/prevMonth"
@@ -206,7 +133,7 @@
 
                     <TextView
                         android:id="@+id/dow1"
-                        android:layout_width="match_parent"
+                        android:layout_width="50dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="ПН"
@@ -215,7 +142,7 @@
 
                     <TextView
                         android:id="@+id/dow2"
-                        android:layout_width="match_parent"
+                        android:layout_width="50dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="ВТ"
@@ -224,7 +151,7 @@
 
                     <TextView
                         android:id="@+id/dow3"
-                        android:layout_width="match_parent"
+                        android:layout_width="50dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="СР"
@@ -233,7 +160,7 @@
 
                     <TextView
                         android:id="@+id/dow4"
-                        android:layout_width="match_parent"
+                        android:layout_width="50dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="ЧТ"
@@ -242,7 +169,7 @@
 
                     <TextView
                         android:id="@+id/dow5"
-                        android:layout_width="match_parent"
+                        android:layout_width="50dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="ПТ"
@@ -251,7 +178,7 @@
 
                     <TextView
                         android:id="@+id/dow6"
-                        android:layout_width="match_parent"
+                        android:layout_width="50dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="СБ"
@@ -260,7 +187,7 @@
 
                     <TextView
                         android:id="@+id/dow7"
-                        android:layout_width="match_parent"
+                        android:layout_width="50dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="ВС"
@@ -270,11 +197,12 @@
 
                 <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="100dp"
+                    android:weightSum="7">
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/CardView"
-                        android:layout_width="match_parent"
+                        android:layout_width="50dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         app:cardCornerRadius="8dp"
@@ -369,7 +297,7 @@
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/CardView"
-                        android:layout_width="match_parent"
+                        android:layout_width="50dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         app:cardCornerRadius="8dp"
@@ -405,80 +333,7 @@
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        app:cardCornerRadius="8dp"
-                        app:cardUseCompatPadding="true">
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="?attr/selectableItemBackgroundBorderless"
-                            android:minHeight="60dp">
-
-                            <TextView
-                                android:id="@+id/day"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="4dp"
-                                android:text="1"
-                                android:textAlignment="center"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                            <LinearLayout
-                                android:id="@+id/events"
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
-                                android:orientation="vertical"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/day"></LinearLayout>
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-                    </androidx.cardview.widget.CardView>
-
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/CardView"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        app:cardCornerRadius="8dp"
-                        app:cardUseCompatPadding="true">
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="?attr/selectableItemBackgroundBorderless"
-                            android:minHeight="60dp">
-
-                            <TextView
-                                android:id="@+id/day"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="4dp"
-                                android:text="1"
-                                android:textAlignment="center"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                            <LinearLayout
-                                android:id="@+id/events"
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
-                                android:orientation="vertical"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/day"></LinearLayout>
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-                    </androidx.cardview.widget.CardView>
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
+                        android:layout_width="50dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         app:cardCornerRadius="8dp"
@@ -515,7 +370,7 @@
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/CardView"
-                        android:layout_width="match_parent"
+                        android:layout_width="50dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         app:cardCornerRadius="8dp"
@@ -551,7 +406,80 @@
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        app:cardCornerRadius="8dp"
+                        app:cardUseCompatPadding="true">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:minHeight="60dp">
+
+                            <TextView
+                                android:id="@+id/day"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="1"
+                                android:textAlignment="center"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <LinearLayout
+                                android:id="@+id/events"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:orientation="vertical"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/day"></LinearLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/CardView"
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        app:cardCornerRadius="8dp"
+                        app:cardUseCompatPadding="true">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:minHeight="60dp">
+
+                            <TextView
+                                android:id="@+id/day"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="1"
+                                android:textAlignment="center"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <LinearLayout
+                                android:id="@+id/events"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:orientation="vertical"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/day"></LinearLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="50dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         app:cardCornerRadius="8dp"
@@ -590,84 +518,12 @@
 
                 <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="100dp"
+                    android:weightSum="7">
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/CardView"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        app:cardCornerRadius="8dp"
-                        app:cardUseCompatPadding="true">
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="?attr/selectableItemBackgroundBorderless"
-                            android:minHeight="60dp">
-
-                            <TextView
-                                android:id="@+id/day"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="4dp"
-                                android:text="1"
-                                android:textAlignment="center"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                            <LinearLayout
-                                android:id="@+id/events"
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
-                                android:orientation="vertical"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/day"></LinearLayout>
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-                    </androidx.cardview.widget.CardView>
-
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/CardView"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        app:cardCornerRadius="8dp"
-                        app:cardUseCompatPadding="true">
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="?attr/selectableItemBackgroundBorderless"
-                            android:minHeight="60dp">
-
-                            <TextView
-                                android:id="@+id/day"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="4dp"
-                                android:text="1"
-                                android:textAlignment="center"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                            <LinearLayout
-                                android:id="@+id/events"
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
-                                android:orientation="vertical"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/day"></LinearLayout>
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-                    </androidx.cardview.widget.CardView>
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
+                        android:layout_width="50dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         app:cardCornerRadius="8dp"
@@ -704,7 +560,7 @@
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/CardView"
-                        android:layout_width="match_parent"
+                        android:layout_width="50dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         app:cardCornerRadius="8dp"
@@ -740,7 +596,7 @@
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
+                        android:layout_width="50dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         app:cardCornerRadius="8dp"
@@ -777,7 +633,7 @@
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/CardView"
-                        android:layout_width="match_parent"
+                        android:layout_width="50dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         app:cardCornerRadius="8dp"
@@ -813,7 +669,80 @@
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        app:cardCornerRadius="8dp"
+                        app:cardUseCompatPadding="true">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:minHeight="60dp">
+
+                            <TextView
+                                android:id="@+id/day"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="1"
+                                android:textAlignment="center"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <LinearLayout
+                                android:id="@+id/events"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:orientation="vertical"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/day"></LinearLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/CardView"
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        app:cardCornerRadius="8dp"
+                        app:cardUseCompatPadding="true">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:minHeight="60dp">
+
+                            <TextView
+                                android:id="@+id/day"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="1"
+                                android:textAlignment="center"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <LinearLayout
+                                android:id="@+id/events"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:orientation="vertical"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/day"></LinearLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="50dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         app:cardCornerRadius="8dp"
@@ -852,84 +781,12 @@
 
                 <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="100dp"
+                    android:weightSum="7">
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/CardView"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        app:cardCornerRadius="8dp"
-                        app:cardUseCompatPadding="true">
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="?attr/selectableItemBackgroundBorderless"
-                            android:minHeight="60dp">
-
-                            <TextView
-                                android:id="@+id/day"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="4dp"
-                                android:text="1"
-                                android:textAlignment="center"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                            <LinearLayout
-                                android:id="@+id/events"
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
-                                android:orientation="vertical"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/day"></LinearLayout>
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-                    </androidx.cardview.widget.CardView>
-
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/CardView"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        app:cardCornerRadius="8dp"
-                        app:cardUseCompatPadding="true">
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="?attr/selectableItemBackgroundBorderless"
-                            android:minHeight="60dp">
-
-                            <TextView
-                                android:id="@+id/day"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="4dp"
-                                android:text="1"
-                                android:textAlignment="center"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                            <LinearLayout
-                                android:id="@+id/events"
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
-                                android:orientation="vertical"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/day"></LinearLayout>
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-                    </androidx.cardview.widget.CardView>
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
+                        android:layout_width="50dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         app:cardCornerRadius="8dp"
@@ -966,7 +823,7 @@
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/CardView"
-                        android:layout_width="match_parent"
+                        android:layout_width="50dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         app:cardCornerRadius="8dp"
@@ -1002,7 +859,7 @@
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
+                        android:layout_width="50dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         app:cardCornerRadius="8dp"
@@ -1039,7 +896,7 @@
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/CardView"
-                        android:layout_width="match_parent"
+                        android:layout_width="50dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         app:cardCornerRadius="8dp"
@@ -1075,7 +932,80 @@
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        app:cardCornerRadius="8dp"
+                        app:cardUseCompatPadding="true">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:minHeight="60dp">
+
+                            <TextView
+                                android:id="@+id/day"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="1"
+                                android:textAlignment="center"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <LinearLayout
+                                android:id="@+id/events"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:orientation="vertical"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/day"></LinearLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/CardView"
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        app:cardCornerRadius="8dp"
+                        app:cardUseCompatPadding="true">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:minHeight="60dp">
+
+                            <TextView
+                                android:id="@+id/day"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="1"
+                                android:textAlignment="center"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <LinearLayout
+                                android:id="@+id/events"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:orientation="vertical"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/day"></LinearLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="50dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         app:cardCornerRadius="8dp"
@@ -1114,84 +1044,12 @@
 
                 <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="100dp"
+                    android:weightSum="7">
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/CardView"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        app:cardCornerRadius="8dp"
-                        app:cardUseCompatPadding="true">
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="?attr/selectableItemBackgroundBorderless"
-                            android:minHeight="60dp">
-
-                            <TextView
-                                android:id="@+id/day"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="4dp"
-                                android:text="1"
-                                android:textAlignment="center"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                            <LinearLayout
-                                android:id="@+id/events"
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
-                                android:orientation="vertical"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/day"></LinearLayout>
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-                    </androidx.cardview.widget.CardView>
-
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/CardView"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        app:cardCornerRadius="8dp"
-                        app:cardUseCompatPadding="true">
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="?attr/selectableItemBackgroundBorderless"
-                            android:minHeight="60dp">
-
-                            <TextView
-                                android:id="@+id/day"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="4dp"
-                                android:text="1"
-                                android:textAlignment="center"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                            <LinearLayout
-                                android:id="@+id/events"
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
-                                android:orientation="vertical"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/day"></LinearLayout>
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-                    </androidx.cardview.widget.CardView>
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
+                        android:layout_width="50dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         app:cardCornerRadius="8dp"
@@ -1228,7 +1086,7 @@
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/CardView"
-                        android:layout_width="match_parent"
+                        android:layout_width="50dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         app:cardCornerRadius="8dp"
@@ -1264,7 +1122,7 @@
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
+                        android:layout_width="50dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         app:cardCornerRadius="8dp"
@@ -1301,7 +1159,7 @@
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/CardView"
-                        android:layout_width="match_parent"
+                        android:layout_width="50dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         app:cardCornerRadius="8dp"
@@ -1337,7 +1195,80 @@
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        app:cardCornerRadius="8dp"
+                        app:cardUseCompatPadding="true">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:minHeight="60dp">
+
+                            <TextView
+                                android:id="@+id/day"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="1"
+                                android:textAlignment="center"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <LinearLayout
+                                android:id="@+id/events"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:orientation="vertical"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/day"></LinearLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/CardView"
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        app:cardCornerRadius="8dp"
+                        app:cardUseCompatPadding="true">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:minHeight="60dp">
+
+                            <TextView
+                                android:id="@+id/day"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="1"
+                                android:textAlignment="center"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <LinearLayout
+                                android:id="@+id/events"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:orientation="vertical"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/day"></LinearLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="50dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         app:cardCornerRadius="8dp"
@@ -1376,84 +1307,12 @@
 
                 <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="100dp"
+                    android:weightSum="7">
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/CardView"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        app:cardCornerRadius="8dp"
-                        app:cardUseCompatPadding="true">
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="?attr/selectableItemBackgroundBorderless"
-                            android:minHeight="60dp">
-
-                            <TextView
-                                android:id="@+id/day"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="4dp"
-                                android:text="1"
-                                android:textAlignment="center"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                            <LinearLayout
-                                android:id="@+id/events"
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
-                                android:orientation="vertical"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/day"></LinearLayout>
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-                    </androidx.cardview.widget.CardView>
-
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/CardView"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        app:cardCornerRadius="8dp"
-                        app:cardUseCompatPadding="true">
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="?attr/selectableItemBackgroundBorderless"
-                            android:minHeight="60dp">
-
-                            <TextView
-                                android:id="@+id/day"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="4dp"
-                                android:text="1"
-                                android:textAlignment="center"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                            <LinearLayout
-                                android:id="@+id/events"
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
-                                android:orientation="vertical"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/day"></LinearLayout>
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-                    </androidx.cardview.widget.CardView>
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
+                        android:layout_width="50dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         app:cardCornerRadius="8dp"
@@ -1490,7 +1349,7 @@
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/CardView"
-                        android:layout_width="match_parent"
+                        android:layout_width="50dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         app:cardCornerRadius="8dp"
@@ -1526,7 +1385,7 @@
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
+                        android:layout_width="50dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         app:cardCornerRadius="8dp"
@@ -1563,7 +1422,7 @@
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/CardView"
-                        android:layout_width="match_parent"
+                        android:layout_width="50dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         app:cardCornerRadius="8dp"
@@ -1599,7 +1458,80 @@
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        app:cardCornerRadius="8dp"
+                        app:cardUseCompatPadding="true">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:minHeight="60dp">
+
+                            <TextView
+                                android:id="@+id/day"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="1"
+                                android:textAlignment="center"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <LinearLayout
+                                android:id="@+id/events"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:orientation="vertical"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/day"></LinearLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/CardView"
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        app:cardCornerRadius="8dp"
+                        app:cardUseCompatPadding="true">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:minHeight="60dp">
+
+                            <TextView
+                                android:id="@+id/day"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="1"
+                                android:textAlignment="center"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <LinearLayout
+                                android:id="@+id/events"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:orientation="vertical"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/day"></LinearLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="50dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         app:cardCornerRadius="8dp"
@@ -1638,84 +1570,12 @@
 
                 <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="100dp">
+                    android:layout_height="100dp"
+                    android:weightSum="7">
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/CardView"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        app:cardCornerRadius="8dp"
-                        app:cardUseCompatPadding="true">
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="?attr/selectableItemBackgroundBorderless"
-                            android:minHeight="60dp">
-
-                            <TextView
-                                android:id="@+id/day"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="4dp"
-                                android:text="1"
-                                android:textAlignment="center"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                            <LinearLayout
-                                android:id="@+id/events"
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
-                                android:orientation="vertical"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/day"></LinearLayout>
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-                    </androidx.cardview.widget.CardView>
-
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/CardView"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        app:cardCornerRadius="8dp"
-                        app:cardUseCompatPadding="true">
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="?attr/selectableItemBackgroundBorderless"
-                            android:minHeight="60dp">
-
-                            <TextView
-                                android:id="@+id/day"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="4dp"
-                                android:text="1"
-                                android:textAlignment="center"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                            <LinearLayout
-                                android:id="@+id/events"
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
-                                android:orientation="vertical"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/day"></LinearLayout>
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-                    </androidx.cardview.widget.CardView>
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
+                        android:layout_width="50dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         app:cardCornerRadius="8dp"
@@ -1752,7 +1612,7 @@
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/CardView"
-                        android:layout_width="match_parent"
+                        android:layout_width="50dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         app:cardCornerRadius="8dp"
@@ -1788,7 +1648,7 @@
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
+                        android:layout_width="50dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         app:cardCornerRadius="8dp"
@@ -1825,7 +1685,7 @@
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/CardView"
-                        android:layout_width="match_parent"
+                        android:layout_width="50dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         app:cardCornerRadius="8dp"
@@ -1861,7 +1721,80 @@
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        app:cardCornerRadius="8dp"
+                        app:cardUseCompatPadding="true">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:minHeight="60dp">
+
+                            <TextView
+                                android:id="@+id/day"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="1"
+                                android:textAlignment="center"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <LinearLayout
+                                android:id="@+id/events"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:orientation="vertical"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/day"></LinearLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/CardView"
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        app:cardCornerRadius="8dp"
+                        app:cardUseCompatPadding="true">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:minHeight="60dp">
+
+                            <TextView
+                                android:id="@+id/day"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="1"
+                                android:textAlignment="center"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <LinearLayout
+                                android:id="@+id/events"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:orientation="vertical"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/day"></LinearLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="50dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         app:cardCornerRadius="8dp"

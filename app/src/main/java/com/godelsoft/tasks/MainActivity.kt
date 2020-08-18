@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.core.view.children
 import com.godelsoft.tasks.extensions.*
+import com.godelsoft.tasks.hierarchy.Event
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 import kotlin.collections.HashMap
@@ -27,8 +28,38 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         }
 
         mainMessage.setOnClickListener(this)
+        DataManager.getEventsByDate(Calendar.getInstance()).let {
+            var ans: Event? = null
+            for (e in it) {
+                val start = Calendar.getInstance()
+                e.timeBegin.split(":").toTypedArray().apply {
+                    start.hour = this[0].toInt()
+                    start.minute = this[1].toInt()
+                }
+                val end: Calendar? = Calendar.getInstance().let endLet@{ end ->
+                    if (e.timeEnd != null) {
+                        e.timeEnd!!.split(":").toTypedArray().apply {
+                            end.hour = this[0].toInt()
+                            end.minute = this[1].toInt()
+                        }
+                        return@endLet end
+                    } else return@endLet null
+                }
+                Calendar.getInstance().apply {
+                    if (start.before(this)) {
+                        if ((end != null && end.after(this)) || end == null) {
+                            ans = e
+                        }
+                    }
+                }
 
+            }
+            ans?.toCard(this)
+        }?.apply {
+            curEventLay.addView(this)
+        }
         loadCal()
+
         nextMonth.setOnClickListener(this)
         prevMonth.setOnClickListener(this)
     }

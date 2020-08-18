@@ -2,6 +2,30 @@ package com.godelsoft.tasks.extensions
 
 import java.util.*
 
+var Calendar.second: Int
+    set(value) {
+        set(Calendar.SECOND, value)
+    }
+    get() {
+        return get(Calendar.SECOND)
+    }
+
+var Calendar.minute: Int
+    set(value) {
+        set(Calendar.MINUTE, value)
+    }
+    get() {
+        return get(Calendar.MINUTE)
+    }
+
+var Calendar.hour: Int
+    set(value) {
+        set(Calendar.HOUR_OF_DAY, value)
+    }
+    get() {
+        return get(Calendar.HOUR_OF_DAY)
+    }
+
 var Calendar.day: Int
     set(value) {
         set(Calendar.DATE, value)

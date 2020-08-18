@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import com.godelsoft.tasks.R
 import kotlinx.android.synthetic.main.activity_main.view.*
-import kotlinx.android.synthetic.main.event_card.view.color
+import kotlinx.android.synthetic.main.event_card.view.*
 import java.util.*
 
 open class Event (
