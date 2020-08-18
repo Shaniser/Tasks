@@ -5,6 +5,7 @@ import com.godelsoft.tasks.extensions.day
 import com.godelsoft.tasks.hierarchy.*
 import java.lang.Exception
 import java.util.*
+import kotlin.Comparator
 import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
 
@@ -38,19 +39,20 @@ object DataManager {
                 events[i * 100 + j] = when(Random().nextInt(3)) {
                     0 -> Event(
                         i * 100 + j,
-                        arrayListOf("Матанализ", "ЛинАл", "Алгоритмы компьютерной графики").random(),
+                        arrayListOf("Уборка", "Домашняя работа", "Занятие спортом").random(),
                         "description",
                         Calendar.getInstance().apply { timeInMillis = c.timeInMillis },
-                        "time start"
+                        "${Random().nextInt(13) + 8}:${Random().nextInt(60).let { if (it < 10) "0$it" else "$it" }}"
                     )
                     else -> Lesson(
                         i * 100 + j,
                         arrayListOf("Матанализ", "ЛинАл", "Алгоритмы компьютерной графики").random(),
                         "description",
                         Calendar.getInstance().apply { timeInMillis = c.timeInMillis },
-                        "time start",
+                        "${Random().nextInt(13) + 8}:${Random().nextInt(60).let { if (it < 10) "0$it" else "$it" }}",
                         "time end",
-                        arrayListOf(LessonType.LECTURE, LessonType.SEMINAR).random()
+                        arrayListOf(LessonType.LECTURE, LessonType.SEMINAR).random(),
+                        arrayListOf("777л", "428ю", "218", null).random()
                     )
                 }
             }
@@ -85,7 +87,9 @@ object DataManager {
                     add(event)
                 }
             }
-            sortBy { event -> event.date }
+            sortWith(compareBy{
+                it.timeBegin.split(":").toTypedArray().let { t -> t[0].toInt() * 60 + t[1].toInt() + (it.date.timeInMillis / 1000 / 60 / 60 / 24) * 24 * 60}
+            })
         }
     }
 

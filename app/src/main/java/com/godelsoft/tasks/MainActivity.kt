@@ -81,6 +81,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 }
             }
         }
+        loadDayEvents()
     }
 
     private fun loadDayCard(c: Calendar, view: View, curMonth: Int) {
@@ -122,6 +123,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     addView(event.toLittleCard(this@MainActivity))
                 }
             }
+        }
+    }
+
+    private fun loadDayEvents() {
+        findViewById<TextView>(R.id.curDate).text = selectedDate.date
+        findViewById<LinearLayout>(R.id.curDateEvents).apply {
+            removeAllViews()
+            val lAndE = DataManager.getLessonsAndEventsByDate(selectedDate)
+            for (l in lAndE.first) addView(l.toCard(this@MainActivity))
+            for (e in lAndE.second) addView(e.toCard(this@MainActivity))
         }
     }
 }
