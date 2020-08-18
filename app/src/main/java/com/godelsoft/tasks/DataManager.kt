@@ -24,6 +24,14 @@ object DataManager {
         }
     }
 
+    fun getEventById(id: Int): Event? {
+        return events[id]
+    }
+
+    fun getTeacherById(id: Int): Teacher? {
+        return teachers[id]
+    }
+
     fun createId(): Int {
         // TODO BD creates unique ID
         return 0
