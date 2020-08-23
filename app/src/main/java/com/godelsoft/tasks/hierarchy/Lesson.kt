@@ -16,8 +16,8 @@ class Lesson(
     timeEnd: String,
     var type: LessonType,
     var classroom: String? = null,
-    var teacher: Teacher? = null
+    var teacher: Teacher? = null,
+    var isNotEveryWeek: Boolean = false
 
 ) : Event(id, header, content, date, timeBegin, timeEnd) {
-
 }

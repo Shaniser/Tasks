@@ -8,6 +8,7 @@ import androidx.cardview.widget.CardView
 import com.godelsoft.tasks.R
 import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.android.synthetic.main.event_card.view.*
+import java.io.Serializable
 import java.util.*
 
 open class Event (
@@ -17,7 +18,7 @@ open class Event (
     var date: Calendar,
     var timeBegin: String,
     var timeEnd: String? = null
-){
+) {
     private val attachments: ArrayList<Attachment> = arrayListOf()
 
     fun addAttachment(newAttachment: Attachment) {
