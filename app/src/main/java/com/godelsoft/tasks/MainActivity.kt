@@ -1,20 +1,24 @@
 package com.godelsoft.tasks
 
 import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TableRow
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.core.view.children
 import com.godelsoft.tasks.extensions.*
 import com.godelsoft.tasks.hierarchy.Event
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.event_card.*
+import java.io.Serializable
 import java.util.*
 import kotlin.collections.HashMap
+
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -60,6 +64,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         }
         loadCal()
 
+        event.setOnClickListener(this)
         nextMonth.setOnClickListener(this)
         prevMonth.setOnClickListener(this)
     }
@@ -77,8 +82,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.mainMessage -> {
                 Toast.makeText(this, "test", Toast.LENGTH_SHORT).show()
             }
+            R.id.event -> {
+                val intent = Intent(this, EventActivity::class.java)
+                intent.putExtra("id", cardToEventId[v])
+                startActivity(intent)
+            }
         }
-
         if (cardToCal.containsKey(v)) {
             selectedDate = cardToCal[v]
             loadCal()
@@ -157,13 +166,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
+    private val cardToEventId = HashMap<View, Int>()
+
     private fun loadDayEvents() {
+        cardToEventId.clear()
         findViewById<TextView>(R.id.curDate).text = selectedDate.date
         findViewById<LinearLayout>(R.id.curDateEvents).apply {
             removeAllViews()
             val lAndE = DataManager.getLessonsAndEventsByDate(selectedDate)
-            for (l in lAndE.first) addView(l.toCard(this@MainActivity))
-            for (e in lAndE.second) addView(e.toCard(this@MainActivity))
+            for (l in lAndE.first) addView(l.toCard(this@MainActivity).apply { cardToEventId[this.findViewById(R.id.event)] = l.id })
+            for (e in lAndE.second ) addView(e.toCard(this@MainActivity).apply { cardToEventId[this.findViewById(R.id.event)] = e.id })
         }
     }
 }

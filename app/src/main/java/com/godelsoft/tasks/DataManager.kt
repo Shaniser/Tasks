@@ -10,6 +10,9 @@ import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
 
 object DataManager {
+
+    val test: Event? = null
+
     private val dateToEventIdArr = hashMapOf<String, ArrayList<Int>>()
     private val events: HashMap<Int, Event> = hashMapOf()
     private val teachers: HashMap<Int, Teacher> = hashMapOf()
@@ -35,6 +38,10 @@ object DataManager {
     fun createId(): Int {
         // TODO BD creates unique ID
         return 0
+    }
+
+    fun saveEvent(event: Event) {
+        // TODO save or edit on DB
     }
 
     private fun loadEvents() {
