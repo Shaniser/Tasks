@@ -1,5 +1,6 @@
 package com.godelsoft.tasks
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import android.graphics.drawable.ColorDrawable
@@ -18,14 +19,17 @@ import com.godelsoft.tasks.extensions.year
 import com.godelsoft.tasks.hierarchy.Event
 import com.godelsoft.tasks.hierarchy.Lesson
 import com.godelsoft.tasks.hierarchy.LessonType
+import com.godelsoft.tasks.hierarchy.Teacher
 import kotlinx.android.synthetic.main.activity_event.*
 import java.util.*
 
 
-class EventActivity : AppCompatActivity() {
+class EventActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_event)
+
+
 
         val arguments = intent.extras
         val id: Int? = arguments?.getInt("id")
@@ -37,6 +41,8 @@ class EventActivity : AppCompatActivity() {
             "Семинар"
         )
         list.add(0,"Лекция или семинар?")
+
+
 
         val adapter:ArrayAdapter<String> = object: ArrayAdapter<String>(
             context,
@@ -78,12 +84,12 @@ class EventActivity : AppCompatActivity() {
                 isNotEveryWeekCB.visibility = View.GONE
                 lessonTypeS.visibility = View.GONE
                 classroomET.visibility = View.GONE
-                teacherET.visibility = View.GONE
+                //teacherET.visibility = View.GONE
             } else {
                 isNotEveryWeekCB.visibility = View.VISIBLE
                 lessonTypeS.visibility = View.VISIBLE
                 classroomET.visibility = View.VISIBLE
-                teacherET.visibility = View.VISIBLE
+                //teacherET.visibility = View.VISIBLE
             }
         }
 
@@ -104,14 +110,15 @@ class EventActivity : AppCompatActivity() {
                 if (type == LessonType.LECTURE)  spinner.setSelection(1)
                 else spinner.setSelection(2)
                 classroomET.setText(classroom ?: "")
-                if (teacher == null) teacherET.setText("")
-                else teacherET.setText(teacher.toString())
+
+                //if (teacher == null) teacherET.setText("")
+                //else //teacherET.setText(teacher.toString())
 
             } else if (!isLessonCB.isChecked) {
                 isNotEveryWeekCB.visibility = View.GONE
                 lessonTypeS.visibility = View.GONE
                 classroomET.visibility = View.GONE
-                teacherET.visibility = View.GONE
+                //teacherET.visibility = View.GONE
             }
         }
 
@@ -134,6 +141,16 @@ class EventActivity : AppCompatActivity() {
                     Toast.makeText(this, "Успешно сохранено!", Toast.LENGTH_SHORT).show()
                 }
             } else Toast.makeText(this, "Введите все обязательные поля!", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    override fun onClick(v: View?) {
+        when (v?.id) {
+            R.id.textView3 -> {
+                val intent = Intent(this, TeacherActivity::class.java)
+                startActivity(intent)
+                //TODO realise extra (не знаю что передавать чтоб изменять препода)
+            }
         }
     }
 }

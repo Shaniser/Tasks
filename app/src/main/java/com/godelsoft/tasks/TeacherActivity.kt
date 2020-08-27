@@ -8,4 +8,5 @@ class TeacherActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_teacher)
     }
+    //TODO реализовать сохранение
 }
