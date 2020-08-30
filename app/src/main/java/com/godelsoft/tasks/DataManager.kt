@@ -1,15 +1,19 @@
 package com.godelsoft.tasks
 
-
 import com.beust.klaxon.Klaxon
 import com.godelsoft.tasks.extensions.date
 import com.godelsoft.tasks.extensions.day
 import com.godelsoft.tasks.hierarchy.*
+import org.json.JSONObject
 import java.lang.Exception
 import java.util.*
 import kotlin.Comparator
 import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
+
+import retrofit2.Call
+import retrofit2.http.GET
+import retrofit2.http.Query
 
 class LessonInfo(val id: String, val header: String, val content: String, val description: String, val date: String, val timeBegin: String, val timeEnd: String, val type: String, val classroom: String, val teacher: String, val isNotEveryWeek: String)
 
@@ -31,8 +35,6 @@ object DataManager {
         }
     }
     val testName: String = "[{\"id\":\"1\",\"header\":\"\\u041c\\u0430\\u0442\\u0430\\u043d\\u0430\\u043b\\u0438\\u0437\",\"content\":\"description\",\"date\":\"30.08.2020\",\"timeBegin\":\"12:00\",\"timeEnd\":\"13:30\",\"type\":\"LECTURE\",\"classroom\":\"666\",\"teacher\":\"\\u0413\\u043e\\u043b\\u0443\\u0431\\u043a\\u043e\\u0432\",\"isNotEveryWeek\":\"0\"},{\"id\":\"2\",\"header\":\"\\u041b\\u0438\\u043d\\u0430\\u043b\",\"content\":\"description\",\"date\":\"30.08.2020\",\"timeBegin\":\"13:40\",\"timeEnd\":\"15:10\",\"type\":\"SEMINAR\",\"classroom\":\"228\",\"teacher\":\"\\u0421\\u0442\\u0435\\u043f\\u0430\\u043d\\u043e\\u0432\",\"isNotEveryWeek\":\"0\"},{\"id\":\"3\",\"header\":\"\\u0424\\u0438\\u0437\\u0440\\u0430\",\"content\":\"description\",\"date\":\"30.08.2020\",\"timeBegin\":\"15:20\",\"timeEnd\":\"16:50\",\"type\":\"SEMINAR\",\"classroom\":\"\\u0421\\u041a\",\"teacher\":\"\\u0411\\u0440\\u044b\\u0437\\u0433\\u0430\\u043b\\u043e\\u0432\",\"isNotEveryWeek\":\"0\"},{\"id\":\"4\",\"header\":\"\\u0413\\u0440\\u0430\\u0444\\u0438\\u043a\\u0430\",\"content\":\"description\",\"date\":\"31.08.2020\",\"timeBegin\":\"12:00\",\"timeEnd\":\"13:30\",\"type\":\"SEMINAR\",\"classroom\":\"400\\u044e\",\"teacher\":\"\\u0412\\u0438\\u0448\\u043d\\u044f\\u043a\\u043e\\u0432\",\"isNotEveryWeek\":\"0\"},{\"id\":\"5\",\"header\":\"\\u041c\\u0430\\u0442\\u0430\\u043d\\u0430\\u043b\\u0438\\u0437\",\"content\":\"description\",\"date\":\"31.08.2020\",\"timeBegin\":\"13:40\",\"timeEnd\":\"15:10\",\"type\":\"SEMINAR\",\"classroom\":\"242\",\"teacher\":\"\\u0427\\u0435\\u0442\\u0432\\u0435\\u0440\\u0438\\u043a\\u043e\\u0432\",\"isNotEveryWeek\":\"0\"},{\"id\":\"6\",\"header\":\"\\u041c\\u0430\\u0442\\u0430\\u043d\\u0430\\u043b\\u0438\\u0437\",\"content\":\"description\",\"date\":\"31.08.2020\",\"timeBegin\":\"15:20\",\"timeEnd\":\"16:50\",\"type\":\"SEMINAR\",\"classroom\":\"242\",\"teacher\":\"\\u0427\\u0435\\u0442\\u0432\\u0435\\u0440\\u0438\\u043a\\u043e\\u0432\",\"isNotEveryWeek\":\"0\"},{\"id\":\"7\",\"header\":\"\\u041b\\u0438\\u043d\\u0430\\u043b\",\"content\":\"description\",\"date\":\"01.09.2020\",\"timeBegin\":\"12:00\",\"timeEnd\":\"13:30\",\"type\":\"LECTURE\",\"classroom\":\"300\",\"teacher\":\"\\u0421\\u0442\\u0435\\u043f\\u0430\\u043d\\u043e\\u0432\",\"isNotEveryWeek\":\"0\"},{\"id\":\"8\",\"header\":\"\\u0413\\u0440\\u0430\\u0444\\u0438\\u043a\\u0430\",\"content\":\"description\",\"date\":\"01.09.2020\",\"timeBegin\":\"13:40\",\"timeEnd\":\"15:10\",\"type\":\"LECTURE\",\"classroom\":\"400\\u044e\",\"teacher\":\"\\u0412\\u0438\\u0448\\u043d\\u044f\\u043a\\u043e\\u0432\",\"isNotEveryWeek\":\"0\"},{\"id\":\"9\",\"header\":\"\\u0413\\u0440\\u0430\\u0444\\u0438\\u043a\\u0430\",\"content\":\"description\",\"date\":\"01.09.2020\",\"timeBegin\":\"15:20\",\"timeEnd\":\"16:50\",\"type\":\"LECTURE\",\"classroom\":\"400\\u044e\",\"teacher\":\"\\u0412\\u0438\\u0448\\u043d\\u044f\\u043a\\u043e\\u0432\",\"isNotEveryWeek\":\"0\"}]"
-    val resultate = Klaxon()
-        .parse<LessonInfo>(testName)
 
     fun getEventById(id: Int): Event? {
         return events[id]
@@ -54,48 +56,7 @@ object DataManager {
     private fun loadEvents() {
         // TODO load events from DB
 
-        // TODO remove
-        val count = 10000
-        val c = Calendar.getInstance()
-        c.add(Calendar.DAY_OF_MONTH, -(count / 2))
-        for (i in 0..count) {
-            for (j in 0..Random().nextInt(4)) {
-                val start = arrayListOf(
-                    Random().nextInt(13) + 8,
-                    Random().nextInt(12) * 5 % 60
-                )
-                events[i * count * 10 + j] = when(
-                        if (c.get(Calendar.DAY_OF_WEEK).let { it == Calendar.SUNDAY || it == Calendar.SATURDAY })
-                            0
-                        else
-                            Random().nextInt(3)
-                    ) {
-                    0 -> Event(
-                        i * count * 10 + j,
-                        arrayListOf("Уборка", "Домашняя работа", "Занятие спортом").random(),
-                        "description",
-                        Calendar.getInstance().apply { timeInMillis = c.timeInMillis },
-                        "${start[0]}:${if (start[1] < 10) "0${start[1]}" else start[1]}"
-                    )
-                    else -> Lesson(
-                        i * count * 10 + j,
-                        arrayListOf("Матанализ", "ЛинАл", "Алгоритмы компьютерной графики").random(),
-                        "description",
-                        Calendar.getInstance().apply { timeInMillis = c.timeInMillis },
-                        "${start[0]}:${if (start[1] < 10) "0${start[1]}" else start[1]}",
-                        "${((start[1] + 95) / 60 + start[0]) % 24}:${((start[1] + 95) % 60).let { if (it < 10) "0$it" else it }}",
-                        arrayListOf(LessonType.LECTURE, LessonType.SEMINAR).random(),
-                        arrayListOf("777л", "428ю", "218", null).random()
-                    )
-                }
-                if (!dateToEventIdArr.containsKey(c.date)) {
-                    dateToEventIdArr[c.date] = arrayListOf()
-                }
-                dateToEventIdArr[c.date]?.add(i * count * 10 + j)
-            }
-            c.add(Calendar.DAY_OF_MONTH, 1)
-        }
-        // TODO remove
+
     }
 
     private fun loadTeachers() {
