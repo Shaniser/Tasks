@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.graphics.Typeface
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
@@ -34,6 +35,7 @@ class EventActivity : AppCompatActivity(), View.OnClickListener {
         val arguments = intent.extras
         val id: Int? = arguments?.getInt("id")
         val event: Event? = id?.let { DataManager.getEventById(it) }
+        Log.d("TAG", id.toString())
         val spinner: Spinner = lessonTypeS as Spinner
         val context = this
         val list = mutableListOf(
@@ -42,7 +44,11 @@ class EventActivity : AppCompatActivity(), View.OnClickListener {
         )
         list.add(0,"Лекция или семинар?")
 
-
+        if (id == null) {
+            isNotEveryWeekCB.visibility = View.GONE
+            lessonTypeS.visibility = View.GONE
+            classroomET.visibility = View.GONE
+        }
 
         val adapter:ArrayAdapter<String> = object: ArrayAdapter<String>(
             context,
@@ -95,7 +101,6 @@ class EventActivity : AppCompatActivity(), View.OnClickListener {
 
         event?.apply {
             headerET.setText(this.header)
-            //contentET.setText(content)
             contentET.setText(content)
             dateET.setText(date.date)
             timeBeginEt.setText(timeBegin)
@@ -130,14 +135,58 @@ class EventActivity : AppCompatActivity(), View.OnClickListener {
                 newDate.year = dateET.text.toString().split(".")[2].toInt()
                 if (isLessonCB.isChecked) {
                     val myLessonType : LessonType = if (spinner.selectedItemPosition == 0) LessonType.LECTURE else LessonType.SEMINAR
-                    var newLesson: Lesson = Lesson(id!!, headerET.text.toString(), contentET.text.toString(), newDate, timeBeginEt.text.toString(),
-                        timeEndET.text.toString(), myLessonType, classroomET.text.toString(), null, isNotEveryWeekCB.isChecked)
-                    DataManager.saveEvent(newLesson)
+                    if(id != null) {
+                        var newLesson: Lesson = Lesson(
+                            id,
+                            headerET.text.toString(),
+                            contentET.text.toString(),
+                            newDate,
+                            timeBeginEt.text.toString(),
+                            timeEndET.text.toString(),
+                            myLessonType,
+                            classroomET.text.toString(),
+                            null,
+                            isNotEveryWeekCB.isChecked
+                        )
+                        DataManager.saveEvent(newLesson)
+                    } else {
+                        var newLesson: Lesson = Lesson(
+                            -1,
+                            headerET.text.toString(),
+                            contentET.text.toString(),
+                            newDate,
+                            timeBeginEt.text.toString(),
+                            timeEndET.text.toString(),
+                            myLessonType,
+                            classroomET.text.toString(),
+                            null,
+                            isNotEveryWeekCB.isChecked
+                        )
+                        DataManager.addEvent(newLesson)
+                    }
                     Toast.makeText(this, "Успешно сохранено!", Toast.LENGTH_SHORT).show()
                 } else {
-                    var newEvent: Event = Event(id!!, headerET.text.toString(), contentET.text.toString(), newDate, timeBeginEt.text.toString(),
-                    timeEndET.text.toString())
-                    DataManager.saveEvent(newEvent)
+                    if (id != null) {
+                        var newEvent: Event = Event(
+                            id,
+                            headerET.text.toString(),
+                            contentET.text.toString(),
+                            newDate,
+                            timeBeginEt.text.toString(),
+                            timeEndET.text.toString()
+                        )
+                        DataManager.saveEvent(newEvent)
+                    } else {
+                        var newEvent: Event = Event(
+                            -1,
+                            headerET.text.toString(),
+                            contentET.text.toString(),
+                            newDate,
+                            timeBeginEt.text.toString(),
+                            timeEndET.text.toString()
+                        )
+                        DataManager.addEvent(newEvent)
+                    }
                     Toast.makeText(this, "Успешно сохранено!", Toast.LENGTH_SHORT).show()
                 }
             } else Toast.makeText(this, "Введите все обязательные поля!", Toast.LENGTH_SHORT).show()
