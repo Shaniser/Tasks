@@ -89,6 +89,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 intent.putExtra("id", cardToEventId[v])
                 startActivity(intent)
             }
+            R.id.addButton -> {
+                val intent = Intent(this, EventActivity::class.java)
+                //intent.putExtra("id", null)
+                startActivity(intent)
+            }
         }
         if (cardToCal.containsKey(v)) {
             selectedDate = cardToCal[v]

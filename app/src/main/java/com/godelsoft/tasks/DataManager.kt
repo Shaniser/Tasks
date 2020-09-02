@@ -161,7 +161,6 @@ object DataManager {
     }
 
     fun addEvent(event: Event) {
-        events[event.id] = event
         // TODO upload event to DB
     }
 
