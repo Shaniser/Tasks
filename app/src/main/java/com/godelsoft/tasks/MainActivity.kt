@@ -1,6 +1,8 @@
 package com.godelsoft.tasks
 
 import android.annotation.SuppressLint
+import android.app.Application
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -22,9 +24,9 @@ import kotlin.collections.HashMap
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        MainActivity.appContext = applicationContext
         setContentView(R.layout.activity_main)
 
         DataManager.initialize({Toast.makeText(this, "Loading error", Toast.LENGTH_SHORT).show()}) {
@@ -177,5 +179,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             for (l in lAndE.first) addView(l.toCard(this@MainActivity).apply { cardToEventId[this.findViewById(R.id.event)] = l.id })
             for (e in lAndE.second ) addView(e.toCard(this@MainActivity).apply { cardToEventId[this.findViewById(R.id.event)] = e.id })
         }
+    }
+
+    companion object {
+        lateinit var appContext: Context;
     }
 }
