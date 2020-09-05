@@ -66,7 +66,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         }
         loadCal()
 
-        event.setOnClickListener(this)
+//        event.setOnClickListener(this)
         nextMonth.setOnClickListener(this)
         prevMonth.setOnClickListener(this)
     }

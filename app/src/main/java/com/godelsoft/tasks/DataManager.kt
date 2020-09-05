@@ -6,6 +6,9 @@ import com.android.volley.*
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.godelsoft.tasks.extensions.date
+import com.godelsoft.tasks.extensions.day
+import com.godelsoft.tasks.extensions.month
+import com.godelsoft.tasks.extensions.year
 import com.godelsoft.tasks.hierarchy.*
 import org.json.JSONArray
 import org.json.JSONObject
@@ -52,34 +55,35 @@ object DataManager {
 
     private fun parseDate(str: String) : Calendar{
         val cal = Calendar.getInstance()
-        cal.set(str.substring(6).toInt(), str.substring(3, 5).toInt(), str.substring(0, 2).toInt())
+        cal.set(str.substring(6).toInt(), str.substring(3, 5).toInt() - 1, str.substring(0, 2).toInt())
         return cal
     }
 
-    private fun loadEventsResponser(response: String) {
+    private fun loadEventsResponseParser(response: String) {
+        Log.d("Result", response)
         val arr = JSONArray(response)
-        for(i in 0..arr.length()) {
-            val record = JSONObject(arr[i].toString());
-            val cal = parseDate(record.getString("date"))
-
-            Log.d("Result", "Calendar: " + cal.date)
-
+        for(i in 0..arr.length()-1) {
+            val record = JSONObject(arr.get(i).toString())
             val id = record.getInt("id")
-            var event = Lesson(id,
+            val cal = parseDate(record.getString("date"))
+            Log.d("Result", record.toString())
+            Log.d("Result", cal.date)
+
+            val event = Lesson(
+                id,
                 record.getString("header"),
                 record.getString("content"),
                 cal,
                 record.getString("timeBegin"),
                 record.getString("timeEnd"),
-                if (record.getString("type") == "LECTURE") LessonType.LECTURE else LessonType.SEMINAR,
-                record.getString("classRoom")
+                if(record.getString("type") == "SEMINAR") LessonType.SEMINAR else LessonType.LECTURE,
+                record.getString("classroom")
             )
-            events.put(record.getInt("id"), event)
+            events.put(id, event)
             if (!dateToEventIdArr.containsKey(cal.date)) {
                 dateToEventIdArr[cal.date] = arrayListOf()
             }
             dateToEventIdArr[cal.date]?.add(id)
-
         }
     }
 
@@ -89,10 +93,10 @@ object DataManager {
             object : StringRequest(
                 Request.Method.POST, "https://tasks-webserver.000webhostapp.com/main.php",
                 Response.Listener() {
-                    response -> loadEventsResponser(response)
+                        response -> loadEventsResponseParser(response)
                 },
                 Response.ErrorListener() {
-                    error -> Log.d("Result", "Error: " + error.toString())
+                        error -> Log.d("Result", "Error: " + error.toString())
                 }) {
                 override fun getParams(): Map<String, String> {
                     val params: MutableMap<String, String> =
@@ -157,10 +161,20 @@ object DataManager {
     }
 
     private fun loadTeachers() {
+
         // TODO load teachers from DB
     }
 
     fun addEvent(event: Event) {
+        if(event !is Lesson) return
+        val lesson = event as Lesson
+        val map = mapOf(
+            "id" to lesson.id, "header" to lesson.header, "content" to lesson.content, "date" to lesson.date.date, "timeBegin" to lesson.timeBegin, "timeEnd" to lesson.timeEnd,
+            "type" to lesson.type.name, "classroom" to lesson.classroom, "teacher" to "TODO teacher to string", "isNotEveryWeek" to if(lesson.isNotEveryWeek) "1" else "0"
+        )
+        val json = JSONObject(map).toString()
+        Log.d("Result", json)
+        events[event.id] = event
         // TODO upload event to DB
     }
 

@@ -52,8 +52,9 @@ var Calendar.year: Int
 
 val Calendar.date: String
     get() {
-        return "$day.$month.$year"
+        return "${if (day < 10) "0$day" else "$day"}.${if (month < 10) "0$month" else "$month"}.$year"
     }
+
 
 val Calendar.dayOfWeek: Int
     get() {
